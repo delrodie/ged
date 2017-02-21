@@ -101,5 +101,5 @@ bazinga_faker:
     entities:
         AppBundle\Entity\Rayonnage:
             number: 25
-        #AppBundle\Entity\Article:
-        #    number: 15
+        AppBundle\Entity\Serie:
+            number: 15
