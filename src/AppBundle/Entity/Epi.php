@@ -6,13 +6,13 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Rayonnage
+ * Epi
  *
- * @ORM\Table(name="rayonnage")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\RayonnageRepository")
+ * @ORM\Table(name="epi")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EpiRepository")
  * @Gedmo\Loggable
  */
-class Rayonnage
+class Epi
 {
     /**
      * @var int
@@ -27,24 +27,9 @@ class Rayonnage
      * @var string
      *
      * @Gedmo\Versioned
-     * @ORM\Column(name="libelle", type="string", length=25, unique=true)
+     * @ORM\Column(name="libelle", type="string", length=10)
      */
     private $libelle;
-
-    /**
-     * @var string
-     *
-     * @Gedmo\Slug(fields={"libelle"})
-     * @ORM\Column(name="slug", type="string", length=25)
-     */
-    private $slug;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="bloc", type="string", length=5, nullable=true)
-     */
-    private $bloc;
 
     /**
      * @var string
@@ -52,6 +37,20 @@ class Rayonnage
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbface", type="integer", nullable=true)
+     */
+    private $nbface;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbrayon", type="integer", nullable=true)
+     */
+    private $nbrayon;
 
     /**
      * @var bool
@@ -93,9 +92,10 @@ class Rayonnage
     private $modifieLe;
 
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Epi", mappedBy="rayonnage")
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rayonnage", inversedBy="epis")
+    * @ORM\JoinColumn(name="rayonnage_id", referencedColumnName="id")
     */
-    private $epis;
+    private $rayonnage;
 
 
     /**
@@ -113,11 +113,11 @@ class Rayonnage
      *
      * @param string $libelle
      *
-     * @return Rayonnage
+     * @return Epi
      */
     public function setLibelle($libelle)
     {
-        $this->libelle = strtoupper($libelle);
+        $this->libelle = $libelle;
 
         return $this;
     }
@@ -133,35 +133,11 @@ class Rayonnage
     }
 
     /**
-     * Set bloc
-     *
-     * @param string $bloc
-     *
-     * @return Rayonnage
-     */
-    public function setBloc($bloc)
-    {
-        $this->bloc = $bloc;
-
-        return $this;
-    }
-
-    /**
-     * Get bloc
-     *
-     * @return string
-     */
-    public function getBloc()
-    {
-        return $this->bloc;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
      *
-     * @return Rayonnage
+     * @return Epi
      */
     public function setDescription($description)
     {
@@ -181,11 +157,59 @@ class Rayonnage
     }
 
     /**
+     * Set nbface
+     *
+     * @param integer $nbface
+     *
+     * @return Epi
+     */
+    public function setNbface($nbface)
+    {
+        $this->nbface = $nbface;
+
+        return $this;
+    }
+
+    /**
+     * Get nbface
+     *
+     * @return int
+     */
+    public function getNbface()
+    {
+        return $this->nbface;
+    }
+
+    /**
+     * Set nbrayon
+     *
+     * @param integer $nbrayon
+     *
+     * @return Epi
+     */
+    public function setNbrayon($nbrayon)
+    {
+        $this->nbrayon = $nbrayon;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrayon
+     *
+     * @return int
+     */
+    public function getNbrayon()
+    {
+        return $this->nbrayon;
+    }
+
+    /**
      * Set statut
      *
      * @param boolean $statut
      *
-     * @return Rayonnage
+     * @return Epi
      */
     public function setStatut($statut)
     {
@@ -205,35 +229,11 @@ class Rayonnage
     }
 
     /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Rayonnage
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
      * Set publiePar
      *
      * @param string $publiePar
      *
-     * @return Rayonnage
+     * @return Epi
      */
     public function setPubliePar($publiePar)
     {
@@ -257,7 +257,7 @@ class Rayonnage
      *
      * @param string $modifiePar
      *
-     * @return Rayonnage
+     * @return Epi
      */
     public function setModifiePar($modifiePar)
     {
@@ -281,7 +281,7 @@ class Rayonnage
      *
      * @param \DateTime $publieLe
      *
-     * @return Rayonnage
+     * @return Epi
      */
     public function setPublieLe($publieLe)
     {
@@ -305,7 +305,7 @@ class Rayonnage
      *
      * @param \DateTime $modifieLe
      *
-     * @return Rayonnage
+     * @return Epi
      */
     public function setModifieLe($modifieLe)
     {
@@ -323,49 +323,28 @@ class Rayonnage
     {
         return $this->modifieLe;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->epis = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add epi
+     * Set rayonnage
      *
-     * @param \AppBundle\Entity\Epi $epi
+     * @param \AppBundle\Entity\Rayonnage $rayonnage
      *
-     * @return Rayonnage
+     * @return Epi
      */
-    public function addEpi(\AppBundle\Entity\Epi $epi)
+    public function setRayonnage(\AppBundle\Entity\Rayonnage $rayonnage = null)
     {
-        $this->epis[] = $epi;
+        $this->rayonnage = $rayonnage;
 
         return $this;
     }
 
     /**
-     * Remove epi
+     * Get rayonnage
      *
-     * @param \AppBundle\Entity\Epi $epi
+     * @return \AppBundle\Entity\Rayonnage
      */
-    public function removeEpi(\AppBundle\Entity\Epi $epi)
+    public function getRayonnage()
     {
-        $this->epis->removeElement($epi);
-    }
-
-    /**
-     * Get epis
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEpis()
-    {
-        return $this->epis;
-    }
-
-    public function __toString() {
-        return $this->getLibelle();
+        return $this->rayonnage;
     }
 }
