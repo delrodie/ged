@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8" />
 
-        <title>{% block title %}Back Office | {% endblock %}</title>
+        <title>{% block title %} ARFIS {% endblock %}</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -36,6 +36,7 @@
       <!-- END THEME GLOBAL STYLES -->
 
       <link href="{{ asset('ressources/vendor/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset('ressources/css/bo.css') }}" rel="stylesheet" type="text/css" />
 
       {% endblock %}
     </head>
@@ -60,8 +61,10 @@
                             </button>
                             <!-- End Toggle Button -->
                             <!-- BEGIN LOGO -->
-                            <a id="index" class="page-logo" href="index.html">
-                                BackOffice<img src="../assets/layouts/layout5/img/logo.png" alt="Logo"> </a>
+                            <a id="index" class="page-logo  MonLogo" href="#">
+                                <!--ArfisGed-->
+                                <img src="{{ asset('ressources/images/logo2.png')}}" alt="">
+                            </a>
                             <!-- END LOGO -->
                             <!-- BEGIN SEARCH -->
                             <form class="search" action="extra_search.html" method="GET">
@@ -78,7 +81,7 @@
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>
                                           {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                            {{ 'layout.hello'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} 
+                                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
                                           {% endif %}
                                         </span>
                                         <img src="{{ asset('ressources/images/avatar.png')}}" alt=""> </button>
@@ -121,41 +124,98 @@
                                 </li>
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
                                     <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-folder"></i> Rubriques </a>
+                                        <i class="icon-folder"></i> ARCHIVAGES </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="">
-                                            <a href="{{ path('admin_rubrique_index')}}">
-                                            <i class="fa fa-list" aria-hidden="true"></i> Listes </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('admin_rubrique_new') }}">
-                                            <i class="fa fa-plus"></i> Ajouter </a>
-                                        </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Rayonnage </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Epi </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Serie </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Sous-serie </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Unité de conservation </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Côte provisoire </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Côte définitive </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Sort final </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
                                     </ul>
                                 </li>
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
                                     <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-doc"></i> Articles </a>
+                                        <i class="icon-doc"></i> NUMERISATIONS </a>
                                    <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="">
-                                            <a href="{{ path('admin_article_index')}}">
-                                            <i class="fa fa-list" aria-hidden="true"></i> Listes </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('admin_article_new')}}">
-                                            <i class="fa fa-plus"></i> Ajouter </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-picture"></i> Photos </a>
-                                    <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="">
-                                            <a href="">
-                                            <i class="fa fa-folder-open-o"></i> albums </a>
-                                        </li>
-
+                                     <li class="dropdown more-dropdown-sub">
+                                         <a href="javascript:;"> Type document </a>
+                                         <ul class="dropdown-menu">
+                                           <li><a href="#">Ajouter</a></li>
+                                           <li><a href="#">Liste</a></li>
+                                         </ul>
+                                     </li>
+                                     <li class="dropdown more-dropdown-sub">
+                                         <a href="javascript:;"> Document </a>
+                                         <ul class="dropdown-menu">
+                                           <li><a href="#">Ajouter</a></li>
+                                           <li><a href="#">Liste</a></li>
+                                         </ul>
+                                     </li>
+                                     <li class="dropdown more-dropdown-sub">
+                                         <a href="javascript:;"> Transfert </a>
+                                         <ul class="dropdown-menu">
+                                           <li><a href="#">Ajouter</a></li>
+                                           <li><a href="#">Liste</a></li>
+                                         </ul>
+                                     </li>
+                                     <li class="dropdown more-dropdown-sub">
+                                         <a href="javascript:;"> Reception </a>
+                                         <ul class="dropdown-menu">
+                                           <li><a href="#">Ajouter</a></li>
+                                           <li><a href="#">Liste</a></li>
+                                         </ul>
+                                     </li>
                                     </ul>
                                 </li>
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
@@ -189,9 +249,8 @@
                     {% block body %}{% endblock %}
                 </div>
                 <!-- BEGIN FOOTER -->
-                <p class="copyright"> 2016 &copy; BackOffice by
-                    <a target="_blank" href="http://edenart.com">Eden'Art</a> &nbsp;|&nbsp;
-                    <span>Vecteur d'Innovation Technologique et Communication Evenementielle</span>
+                <p class="copyright"> 2016 &copy; ARFIS
+                    <span style="float:right">Powered by Eden'Art</span>
                 </p>
                 <a href="#index" class="go2top">
                     <i class="icon-arrow-up"></i>
