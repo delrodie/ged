@@ -99,7 +99,7 @@ bazinga_faker:
     orm: doctrine
     locale: fr_FR
     entities:
-        AppBundle\Entity\Rubrique:
+        AppBundle\Entity\Rayonnage:
             number: 25
-        AppBundle\Entity\Article:
-            number: 15
+        #AppBundle\Entity\Article:
+        #    number: 15

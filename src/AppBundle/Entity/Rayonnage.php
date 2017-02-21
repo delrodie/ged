@@ -42,7 +42,7 @@ class Rayonnage
     /**
      * @var string
      *
-     * @ORM\Column(name="bloc", type="string", length=2, nullable=true)
+     * @ORM\Column(name="bloc", type="string", length=5, nullable=true)
      */
     private $bloc;
 
@@ -112,7 +112,7 @@ class Rayonnage
      */
     public function setLibelle($libelle)
     {
-        $this->libelle = $libelle;
+        $this->libelle = strtoupper($libelle);
 
         return $this;
     }
