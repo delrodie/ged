@@ -364,4 +364,8 @@ class Serie
     {
         return $this->sousseries;
     }
+
+    public function __toString() {
+        return $this->getLibelle();
+    }
 }
