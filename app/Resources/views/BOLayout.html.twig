@@ -37,6 +37,7 @@
 
       <link href="{{ asset('ressources/vendor/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
       <link href="{{ asset('ressources/css/bo.css') }}" rel="stylesheet" type="text/css" />
+	     <link rel="shortcut icon" href="{{ asset('ressources/images/favicon.png')}}" />
 
       {% endblock %}
     </head>
@@ -136,8 +137,8 @@
                                       <li class="dropdown more-dropdown-sub">
                                           <a href="javascript:;"> Epi </a>
                                           <ul class="dropdown-menu">
-                                            <li><a href="#">Ajouter</a></li>
-                                            <li><a href="#">Liste</a></li>
+                                            <li><a href="{{ path('epi_new')}}">Ajouter</a></li>
+                                            <li><a href="{{ path('epi_index')}}">Liste</a></li>
                                           </ul>
                                       </li>
                                       <li class="dropdown more-dropdown-sub">

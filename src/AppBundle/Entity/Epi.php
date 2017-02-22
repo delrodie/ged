@@ -97,6 +97,13 @@ class Epi
     */
     private $rayonnage;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tampon", type="string", length=10, nullable=true)
+     */
+    private $tampon;
+
 
     /**
      * Get id
@@ -346,5 +353,29 @@ class Epi
     public function getRayonnage()
     {
         return $this->rayonnage;
+    }
+
+    /**
+     * Set tampon
+     *
+     * @param string $tampon
+     *
+     * @return Epi
+     */
+    public function setTampon($tampon)
+    {
+        $this->tampon = $tampon;
+
+        return $this;
+    }
+
+    /**
+     * Get tampon
+     *
+     * @return string
+     */
+    public function getTampon()
+    {
+        return $this->tampon;
     }
 }

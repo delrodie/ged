@@ -40,4 +40,32 @@ class RayonnageRepository extends \Doctrine\ORM\EntityRepository
            return $code = $recup;
        }
    }
+
+   /**
+      * Recherche des rayonnages actifs
+      *
+      * Author: Delrodie AMOIKON
+      * Date: 21/02/2017
+      * Since: v1.0
+      */
+      public function getRayonnage()
+      {
+          $em = $this->getEntityManager();
+          $qb = $em->createQuery('
+              SELECT r
+              FROM AppBundle:Rayonnage r
+              WHERE r.statut = :stat
+              ORDER BY r.libelle ASC
+          ')
+            ->setParameter('stat', 1)
+          ;
+          try {
+              $result = $qb->getResult();
+
+              return $result;
+
+          } catch (NoResultException $e) {
+              return $e;
+          }
+      }
 }
