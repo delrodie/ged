@@ -27,7 +27,7 @@ class Conservation
      * @var string
      *
      * @Gedmo\Versioned
-     * @ORM\Column(name="libelle", type="string", length=25)
+     * @ORM\Column(name="libelle", type="string", length=25, unique=true)
      */
     private $libelle;
 
@@ -35,7 +35,7 @@ class Conservation
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=25)
      */
     private $slug;
 
