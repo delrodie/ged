@@ -10,4 +10,31 @@ namespace AppBundle\Repository;
  */
 class ConservationRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+     * Recherche des rayonnages actifs
+     *
+     * Author: Delrodie AMOIKON
+     * Date: 21/02/2017
+     * Since: v1.0
+     */
+     public function getConservation()
+     {
+         $em = $this->getEntityManager();
+         $qb = $em->createQuery('
+             SELECT c
+             FROM AppBundle:Conservation c
+             WHERE c.statut = :stat
+             ORDER BY c.libelle ASC
+         ')
+           ->setParameter('stat', 1)
+         ;
+         try {
+             $result = $qb->getResult();
+
+             return $result;
+
+         } catch (NoResultException $e) {
+             return $e;
+         }
+     }
 }
