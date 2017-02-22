@@ -6,13 +6,13 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Conservation
+ * Provisoire
  *
- * @ORM\Table(name="conservation")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ConservationRepository")
+ * @ORM\Table(name="provisoire")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProvisoireRepository")
  * @Gedmo\Loggable
  */
-class Conservation
+class Provisoire
 {
     /**
      * @var int
@@ -27,17 +27,9 @@ class Conservation
      * @var string
      *
      * @Gedmo\Versioned
-     * @ORM\Column(name="libelle", type="string", length=25, unique=true)
+     * @ORM\Column(name="libelle", type="string", length=255)
      */
     private $libelle;
-
-    /**
-     * @var string
-     *
-     * @Gedmo\Slug(fields={"libelle"})
-     * @ORM\Column(name="slug", type="string", length=25)
-     */
-    private $slug;
 
     /**
      * @var string
@@ -86,9 +78,30 @@ class Conservation
     private $modifieLe;
 
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Provisoire", mappedBy="conservation")
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Conservation", inversedBy="provisoires")
+    * @ORM\JoinColumn(name="conservation_id", referencedColumnName="id")
     */
-    private $provisoires;
+    private $conservation;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sousserie", inversedBy="provisoires")
+    * @ORM\JoinColumn(name="sousserie_id", referencedColumnName="id")
+    */
+    private $sousserie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tampon1", type="string", length=10, nullable=true)
+     */
+    private $tampon1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tampon2", type="string", length=10, nullable=true)
+     */
+    private $tampon2;
 
 
     /**
@@ -106,11 +119,11 @@ class Conservation
      *
      * @param string $libelle
      *
-     * @return Conservation
+     * @return Provisoire
      */
     public function setLibelle($libelle)
     {
-        $this->libelle = strtoupper($libelle);
+        $this->libelle = $libelle;
 
         return $this;
     }
@@ -126,35 +139,11 @@ class Conservation
     }
 
     /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Conservation
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
      *
-     * @return Conservation
+     * @return Provisoire
      */
     public function setDescription($description)
     {
@@ -178,7 +167,7 @@ class Conservation
      *
      * @param boolean $statut
      *
-     * @return Conservation
+     * @return Provisoire
      */
     public function setStatut($statut)
     {
@@ -190,7 +179,7 @@ class Conservation
     /**
      * Get statut
      *
-     * @return boolean
+     * @return bool
      */
     public function getStatut()
     {
@@ -202,7 +191,7 @@ class Conservation
      *
      * @param string $publiePar
      *
-     * @return Conservation
+     * @return Provisoire
      */
     public function setPubliePar($publiePar)
     {
@@ -226,7 +215,7 @@ class Conservation
      *
      * @param string $modifiePar
      *
-     * @return Conservation
+     * @return Provisoire
      */
     public function setModifiePar($modifiePar)
     {
@@ -250,7 +239,7 @@ class Conservation
      *
      * @param \DateTime $publieLe
      *
-     * @return Conservation
+     * @return Provisoire
      */
     public function setPublieLe($publieLe)
     {
@@ -274,7 +263,7 @@ class Conservation
      *
      * @param \DateTime $modifieLe
      *
-     * @return Conservation
+     * @return Provisoire
      */
     public function setModifieLe($modifieLe)
     {
@@ -292,45 +281,100 @@ class Conservation
     {
         return $this->modifieLe;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->provisoires = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add provisoire
+     * Set tampon1
      *
-     * @param \AppBundle\Entity\Provisoire $provisoire
+     * @param string $tampon1
      *
-     * @return Conservation
+     * @return Provisoire
      */
-    public function addProvisoire(\AppBundle\Entity\Provisoire $provisoire)
+    public function setTampon1($tampon1)
     {
-        $this->provisoires[] = $provisoire;
+        $this->tampon1 = $tampon1;
 
         return $this;
     }
 
     /**
-     * Remove provisoire
+     * Get tampon1
      *
-     * @param \AppBundle\Entity\Provisoire $provisoire
+     * @return string
      */
-    public function removeProvisoire(\AppBundle\Entity\Provisoire $provisoire)
+    public function getTampon1()
     {
-        $this->provisoires->removeElement($provisoire);
+        return $this->tampon1;
     }
 
     /**
-     * Get provisoires
+     * Set tampon2
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param string $tampon2
+     *
+     * @return Provisoire
      */
-    public function getProvisoires()
+    public function setTampon2($tampon2)
     {
-        return $this->provisoires;
+        $this->tampon2 = $tampon2;
+
+        return $this;
+    }
+
+    /**
+     * Get tampon2
+     *
+     * @return string
+     */
+    public function getTampon2()
+    {
+        return $this->tampon2;
+    }
+
+    /**
+     * Set conservation
+     *
+     * @param \AppBundle\Entity\Conservation $conservation
+     *
+     * @return Provisoire
+     */
+    public function setConservation(\AppBundle\Entity\Conservation $conservation = null)
+    {
+        $this->conservation = $conservation;
+
+        return $this;
+    }
+
+    /**
+     * Get conservation
+     *
+     * @return \AppBundle\Entity\Conservation
+     */
+    public function getConservation()
+    {
+        return $this->conservation;
+    }
+
+    /**
+     * Set sousserie
+     *
+     * @param \AppBundle\Entity\Sousserie $sousserie
+     *
+     * @return Provisoire
+     */
+    public function setSousserie(\AppBundle\Entity\Sousserie $sousserie = null)
+    {
+        $this->sousserie = $sousserie;
+
+        return $this;
+    }
+
+    /**
+     * Get sousserie
+     *
+     * @return \AppBundle\Entity\Sousserie
+     */
+    public function getSousserie()
+    {
+        return $this->sousserie;
     }
 }
