@@ -6,13 +6,13 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Serie
+ * Sousserie
  *
- * @ORM\Table(name="serie")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\SerieRepository")
+ * @ORM\Table(name="sousserie")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SousserieRepository")
  * @Gedmo\Loggable
  */
-class Serie
+class Sousserie
 {
     /**
      * @var int
@@ -27,31 +27,16 @@ class Serie
      * @var string
      *
      * @Gedmo\Versioned
-     * @ORM\Column(name="libelle", type="string", length=15, unique=true)
+     * @ORM\Column(name="libelle", type="string", length=25)
      */
     private $libelle;
 
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"libelle"})
-     * @ORM\Column(name="slug", type="string", length=15)
+     * @ORM\Column(name="designation", type="text", nullable=true)
      */
-    private $slug;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="bloc", type="string", length=5, nullable=true)
-     */
-    private $bloc;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-    private $description;
+    private $designation;
 
     /**
      * @var bool
@@ -93,9 +78,17 @@ class Serie
     private $modifieLe;
 
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sousserie", mappedBy="serie")
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Serie", inversedBy="sousseries")
+    * @ORM\JoinColumn(name="serie_id", referencedColumnName="id")
     */
-    private $sousseries;
+    private $serie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tampon", type="string", length=10, nullable=true)
+     */
+    private $tampon;
 
 
     /**
@@ -113,11 +106,11 @@ class Serie
      *
      * @param string $libelle
      *
-     * @return Serie
+     * @return Sousserie
      */
     public function setLibelle($libelle)
     {
-        $this->libelle = strtoupper($libelle);
+        $this->libelle = $libelle;
 
         return $this;
     }
@@ -133,75 +126,27 @@ class Serie
     }
 
     /**
-     * Set slug
+     * Set designation
      *
-     * @param string $slug
+     * @param string $designation
      *
-     * @return Serie
+     * @return Sousserie
      */
-    public function setSlug($slug)
+    public function setDesignation($designation)
     {
-        $this->slug = $slug;
+        $this->designation = $designation;
 
         return $this;
     }
 
     /**
-     * Get slug
+     * Get designation
      *
      * @return string
      */
-    public function getSlug()
+    public function getDesignation()
     {
-        return $this->slug;
-    }
-
-    /**
-     * Set bloc
-     *
-     * @param string $bloc
-     *
-     * @return Serie
-     */
-    public function setBloc($bloc)
-    {
-        $this->bloc = $bloc;
-
-        return $this;
-    }
-
-    /**
-     * Get bloc
-     *
-     * @return string
-     */
-    public function getBloc()
-    {
-        return $this->bloc;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Serie
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
+        return $this->designation;
     }
 
     /**
@@ -209,7 +154,7 @@ class Serie
      *
      * @param boolean $statut
      *
-     * @return Serie
+     * @return Sousserie
      */
     public function setStatut($statut)
     {
@@ -221,7 +166,7 @@ class Serie
     /**
      * Get statut
      *
-     * @return boolean
+     * @return bool
      */
     public function getStatut()
     {
@@ -233,7 +178,7 @@ class Serie
      *
      * @param string $publiePar
      *
-     * @return Serie
+     * @return Sousserie
      */
     public function setPubliePar($publiePar)
     {
@@ -257,7 +202,7 @@ class Serie
      *
      * @param string $modifiePar
      *
-     * @return Serie
+     * @return Sousserie
      */
     public function setModifiePar($modifiePar)
     {
@@ -281,7 +226,7 @@ class Serie
      *
      * @param \DateTime $publieLe
      *
-     * @return Serie
+     * @return Sousserie
      */
     public function setPublieLe($publieLe)
     {
@@ -305,7 +250,7 @@ class Serie
      *
      * @param \DateTime $modifieLe
      *
-     * @return Serie
+     * @return Sousserie
      */
     public function setModifieLe($modifieLe)
     {
@@ -323,49 +268,52 @@ class Serie
     {
         return $this->modifieLe;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sousseries = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add sousseries
+     * Set tampon
      *
-     * @param \AppBundle\Entity\Sousserie $sousseries
+     * @param string $tampon
      *
-     * @return Serie
+     * @return Sousserie
      */
-    public function addSousseries(\AppBundle\Entity\Sousserie $sousseries)
+    public function setTampon($tampon)
     {
-        $this->sousseries[] = $sousseries;
+        $this->tampon = $tampon;
 
         return $this;
     }
 
     /**
-     * Remove sousseries
+     * Get tampon
      *
-     * @param \AppBundle\Entity\Sousserie $sousseries
+     * @return string
      */
-    public function removeSousseries(\AppBundle\Entity\Sousserie $sousseries)
+    public function getTampon()
     {
-        $this->sousseries->removeElement($sousseries);
+        return $this->tampon;
     }
 
     /**
-     * Get sousseries
+     * Set serie
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \AppBundle\Entity\Serie $serie
+     *
+     * @return Sousserie
      */
-    public function getSousseries()
+    public function setSerie(\AppBundle\Entity\Serie $serie = null)
     {
-        return $this->sousseries;
+        $this->serie = $serie;
+
+        return $this;
     }
 
-    public function __toString() {
-        return $this->getLibelle();
+    /**
+     * Get serie
+     *
+     * @return \AppBundle\Entity\Serie
+     */
+    public function getSerie()
+    {
+        return $this->serie;
     }
 }
