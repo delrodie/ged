@@ -98,21 +98,17 @@ class EpiController extends Controller
         $deleteForm = $this->createDeleteForm($epi);
         $editForm = $this->createForm('AppBundle\Form\EpiType', $epi);
         $editForm->handleRequest($request);
-        $em = $this->getDoctrine()->getManager();
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('epi_index');
+            return $this->redirectToRoute('epi_edit', array('id' => $epi->getId()));
         }
-
-        $rayons = $em->getRepository('AppBundle:Rayonnage')->getRayonnage();
 
         return $this->render('epi/edit.html.twig', array(
             'epi' => $epi,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'rayons' => $rayons,
         ));
     }
 

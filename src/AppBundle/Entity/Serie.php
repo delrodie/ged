@@ -92,11 +92,6 @@ class Serie
      */
     private $modifieLe;
 
-    /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sousserie", mappedBy="serie")
-    */
-    private $sousseries;
-
 
     /**
      * Get id
@@ -322,50 +317,5 @@ class Serie
     public function getModifieLe()
     {
         return $this->modifieLe;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sousseries = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add sousseries
-     *
-     * @param \AppBundle\Entity\Sousserie $sousseries
-     *
-     * @return Serie
-     */
-    public function addSousseries(\AppBundle\Entity\Sousserie $sousseries)
-    {
-        $this->sousseries[] = $sousseries;
-
-        return $this;
-    }
-
-    /**
-     * Remove sousseries
-     *
-     * @param \AppBundle\Entity\Sousserie $sousseries
-     */
-    public function removeSousseries(\AppBundle\Entity\Sousserie $sousseries)
-    {
-        $this->sousseries->removeElement($sousseries);
-    }
-
-    /**
-     * Get sousseries
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSousseries()
-    {
-        return $this->sousseries;
-    }
-
-    public function __toString() {
-        return $this->getLibelle();
     }
 }
