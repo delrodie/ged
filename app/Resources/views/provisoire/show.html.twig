@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Provisoire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ provisoire.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ provisoire.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ provisoire.description }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if provisoire.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ provisoire.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ provisoire.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ provisoire.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ provisoire.modifieLe }}</td>
+            </tr>
+            <tr>
+                <th>Tampon1</th>
+                <td>{{ provisoire.tampon1 }}</td>
+            </tr>
+            <tr>
+                <th>Tampon2</th>
+                <td>{{ provisoire.tampon2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('provisoire_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('provisoire_edit', { 'id': provisoire.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
