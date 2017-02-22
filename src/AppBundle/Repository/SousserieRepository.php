@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class SousserieRepository extends \Doctrine\ORM\EntityRepository
 {
+  
 }
