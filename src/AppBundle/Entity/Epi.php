@@ -343,7 +343,7 @@ class Epi
      *
      * @return Epi
      */
-    public function setRayonnage(\AppBundle\Entity\Rayonnage $rayonnage = null)
+    public function setRayonnage(\AppBundle\Entity\Rayonnage $rayonnage)
     {
         $this->rayonnage = $rayonnage;
 

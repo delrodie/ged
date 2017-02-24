@@ -45,12 +45,12 @@ class EpiType extends AbstractType
             ))
               ->add('statut')
               //->add('publiePar')->add('modifiePar')->add('publieLe')
-              /*->add('rayonnage', null, array(
+              ->add('rayonnage', null, array(
                   'attr'  => array(
                       'class' => 'form-control select-rayonnage',
                       'autocomplete'  => 'off'
                   )
-            ))*/
+            ))
               ->add('tampon', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control select-rayonnage',

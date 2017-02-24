@@ -37,8 +37,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form_themes:
-        - 'form/fields.html.twig'
+    #form_themes:
+    #    - 'form/fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -94,6 +94,9 @@ fos_user:
     user_class: AppBundle\Entity\User
     group:
         group_class: AppBundle\Entity\Group
+    from_email:
+      address: delrodieamoikon@gmail.com
+      sender_name: AMOIKON DIEUDONNE
 
 bazinga_faker:
     orm: doctrine

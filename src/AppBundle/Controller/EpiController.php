@@ -6,6 +6,7 @@ use AppBundle\Entity\Epi;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Rayonnage;
 
 /**
  * Epi controller.
@@ -52,7 +53,7 @@ class EpiController extends Controller
             $rayon = trim($epi->getTampon(), "'");
             //$rayon = $epi->getTampon();
             //die($rayon);
-            //$epi->setRayonnage($em->merge($this->getReference($rayon)));
+            $epi->setRayonnage($rayon);
             //die($rayon);
 
             $em->persist($epi);
