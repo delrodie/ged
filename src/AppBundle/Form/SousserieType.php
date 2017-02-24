@@ -31,18 +31,18 @@ class SousserieType extends AbstractType
           ))
             ->add('statut')
             //->add('publiePar')->add('modifiePar')->add('publieLe')->add('modifieLe')
-            ->add('tampon', TextType::class, array(
+            /*->add('tampon', TextType::class, array(
+                'attr'  => array(
+                    'class' => 'form-control select-serie',
+                    'autocomplete'  => 'off'
+                )
+          ))*/ 
+            ->add('serie', null, array(
                 'attr'  => array(
                     'class' => 'form-control select-serie',
                     'autocomplete'  => 'off'
                 )
           ))
-          /*  ->add('serie', null, array(
-                'attr'  => array(
-                    'class' => 'form-control select-serie',
-                    'autocomplete'  => 'off'
-                )
-          ))  */
             ;
     }
 

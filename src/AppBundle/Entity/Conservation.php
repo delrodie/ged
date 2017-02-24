@@ -333,4 +333,8 @@ class Conservation
     {
         return $this->provisoires;
     }
+
+    public function __toString() {
+        return $this->getLibelle();
+    }
 }

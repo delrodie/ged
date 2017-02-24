@@ -362,4 +362,8 @@ class Sousserie
     {
         return $this->provisoires;
     }
+
+    public function __toString() {
+        return $this->getLibelle();
+    }
 }

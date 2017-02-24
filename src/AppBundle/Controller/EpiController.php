@@ -50,10 +50,10 @@ class EpiController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             // Recuperation du rayonnage
-            $rayon = trim($epi->getTampon(), "'");
+            //$rayon = trim($epi->getTampon(), "'");
             //$rayon = $epi->getTampon();
             //die($rayon);
-            $epi->setRayonnage($rayon);
+            //$epi->setRayonnage($rayon);
             //die($rayon);
 
             $em->persist($epi);

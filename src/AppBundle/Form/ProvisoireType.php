@@ -31,7 +31,7 @@ class ProvisoireType extends AbstractType
           ))
             ->add('statut')
             //->add('publiePar')->add('modifiePar')->add('publieLe')->add('modifieLe')
-            ->add('tampon1', TextType::class, array(
+          /*  ->add('tampon1', TextType::class, array(
                 'attr'  => array(
                     'class' => 'form-control select-conservation',
                     'autocomplete'  => 'off'
@@ -42,8 +42,8 @@ class ProvisoireType extends AbstractType
                     'class' => 'form-control select-sousserie',
                     'autocomplete'  => 'off'
                 )
-          ))
-          /*->add('conservation', null, array(
+          ))*/
+          ->add('conservation', null, array(
                   'attr'  => array(
                       'class' => 'form-control select-conservation',
                       'autocomplete'  => 'off'
@@ -54,7 +54,7 @@ class ProvisoireType extends AbstractType
                       'class' => 'form-control select-sousserie',
                       'autocomplete'  => 'off'
                   )
-            ))*/
+            ))
             ;
     }
 

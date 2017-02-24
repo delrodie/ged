@@ -51,12 +51,12 @@ class EpiType extends AbstractType
                       'autocomplete'  => 'off'
                   )
             ))
-              ->add('tampon', TextType::class, array(
+              /*->add('tampon', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control select-rayonnage',
                       'autocomplete'  => 'off'
                   )
-            ))
+            ))*/
               ;
     }
 
