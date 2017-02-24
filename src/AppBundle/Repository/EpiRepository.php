@@ -40,4 +40,32 @@ class EpiRepository extends \Doctrine\ORM\EntityRepository
            return $code = $recup;
        }
    }
+
+   /**
+      * Recherche des rayonnages actifs
+      *
+      * Author: Delrodie AMOIKON
+      * Date: 21/02/2017
+      * Since: v1.0
+      */
+      public function getEpi()
+      {
+          $em = $this->getEntityManager();
+          $qb = $em->createQuery('
+              SELECT e
+              FROM AppBundle:Epi e
+              WHERE e.statut = :stat
+              ORDER BY e.libelle ASC
+          ')
+            ->setParameter('stat', 1)
+          ;
+          try {
+              $result = $qb->getResult();
+
+              return $result;
+
+          } catch (NoResultException $e) {
+              return $e;
+          }
+      }
 }

@@ -423,4 +423,8 @@ class Provisoire
     {
         return $this->definitives;
     }
+
+    public function __toString() {
+        return $this->getLibelle();
+    }
 }

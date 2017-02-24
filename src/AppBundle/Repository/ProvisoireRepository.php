@@ -10,4 +10,31 @@ namespace AppBundle\Repository;
  */
 class ProvisoireRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+     * Recherche des rayonnages actifs
+     *
+     * Author: Delrodie AMOIKON
+     * Date: 21/02/2017
+     * Since: v1.0
+     */
+     public function getProvisoire()
+     {
+         $em = $this->getEntityManager();
+         $qb = $em->createQuery('
+             SELECT p
+             FROM AppBundle:Provisoire p
+             WHERE p.statut = :stat
+             ORDER BY p.libelle ASC
+         ')
+           ->setParameter('stat', 1)
+         ;
+         try {
+             $result = $qb->getResult();
+
+             return $result;
+
+         } catch (NoResultException $e) {
+             return $e;
+         }
+     }
 }

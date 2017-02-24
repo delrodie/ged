@@ -298,4 +298,268 @@ class Definitive
     {
         return $this->vie;
     }
+
+    /**
+     * Set statut
+     *
+     * @param boolean $statut
+     *
+     * @return Definitive
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return boolean
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set publiePar
+     *
+     * @param string $publiePar
+     *
+     * @return Definitive
+     */
+    public function setPubliePar($publiePar)
+    {
+        $this->publiePar = $publiePar;
+
+        return $this;
+    }
+
+    /**
+     * Get publiePar
+     *
+     * @return string
+     */
+    public function getPubliePar()
+    {
+        return $this->publiePar;
+    }
+
+    /**
+     * Set modifiePar
+     *
+     * @param string $modifiePar
+     *
+     * @return Definitive
+     */
+    public function setModifiePar($modifiePar)
+    {
+        $this->modifiePar = $modifiePar;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiePar
+     *
+     * @return string
+     */
+    public function getModifiePar()
+    {
+        return $this->modifiePar;
+    }
+
+    /**
+     * Set publieLe
+     *
+     * @param \DateTime $publieLe
+     *
+     * @return Definitive
+     */
+    public function setPublieLe($publieLe)
+    {
+        $this->publieLe = $publieLe;
+
+        return $this;
+    }
+
+    /**
+     * Get publieLe
+     *
+     * @return \DateTime
+     */
+    public function getPublieLe()
+    {
+        return $this->publieLe;
+    }
+
+    /**
+     * Set modifieLe
+     *
+     * @param \DateTime $modifieLe
+     *
+     * @return Definitive
+     */
+    public function setModifieLe($modifieLe)
+    {
+        $this->modifieLe = $modifieLe;
+
+        return $this;
+    }
+
+    /**
+     * Get modifieLe
+     *
+     * @return \DateTime
+     */
+    public function getModifieLe()
+    {
+        return $this->modifieLe;
+    }
+
+    /**
+     * Set tampon1
+     *
+     * @param string $tampon1
+     *
+     * @return Definitive
+     */
+    public function setTampon1($tampon1)
+    {
+        $this->tampon1 = $tampon1;
+
+        return $this;
+    }
+
+    /**
+     * Get tampon1
+     *
+     * @return string
+     */
+    public function getTampon1()
+    {
+        return $this->tampon1;
+    }
+
+    /**
+     * Set tampon2
+     *
+     * @param string $tampon2
+     *
+     * @return Definitive
+     */
+    public function setTampon2($tampon2)
+    {
+        $this->tampon2 = $tampon2;
+
+        return $this;
+    }
+
+    /**
+     * Get tampon2
+     *
+     * @return string
+     */
+    public function getTampon2()
+    {
+        return $this->tampon2;
+    }
+
+    /**
+     * Set tampon3
+     *
+     * @param string $tampon3
+     *
+     * @return Definitive
+     */
+    public function setTampon3($tampon3)
+    {
+        $this->tampon3 = $tampon3;
+
+        return $this;
+    }
+
+    /**
+     * Get tampon3
+     *
+     * @return string
+     */
+    public function getTampon3()
+    {
+        return $this->tampon3;
+    }
+
+    /**
+     * Set provisoire
+     *
+     * @param \AppBundle\Entity\Provisoire $provisoire
+     *
+     * @return Definitive
+     */
+    public function setProvisoire(\AppBundle\Entity\Provisoire $provisoire = null)
+    {
+        $this->provisoire = $provisoire;
+
+        return $this;
+    }
+
+    /**
+     * Get provisoire
+     *
+     * @return \AppBundle\Entity\Provisoire
+     */
+    public function getProvisoire()
+    {
+        return $this->provisoire;
+    }
+
+    /**
+     * Set sortfinal
+     *
+     * @param \AppBundle\Entity\Sortfinal $sortfinal
+     *
+     * @return Definitive
+     */
+    public function setSortfinal(\AppBundle\Entity\Sortfinal $sortfinal = null)
+    {
+        $this->sortfinal = $sortfinal;
+
+        return $this;
+    }
+
+    /**
+     * Get sortfinal
+     *
+     * @return \AppBundle\Entity\Sortfinal
+     */
+    public function getSortfinal()
+    {
+        return $this->sortfinal;
+    }
+
+    /**
+     * Set epi
+     *
+     * @param \AppBundle\Entity\Epi $epi
+     *
+     * @return Definitive
+     */
+    public function setEpi(\AppBundle\Entity\Epi $epi = null)
+    {
+        $this->epi = $epi;
+
+        return $this;
+    }
+
+    /**
+     * Get epi
+     *
+     * @return \AppBundle\Entity\Epi
+     */
+    public function getEpi()
+    {
+        return $this->epi;
+    }
 }

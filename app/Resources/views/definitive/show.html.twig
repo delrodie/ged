@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Definitive</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ definitive.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ definitive.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ definitive.description }}</td>
+            </tr>
+            <tr>
+                <th>Etagere</th>
+                <td>{{ definitive.etagere }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ definitive.position }}</td>
+            </tr>
+            <tr>
+                <th>Extreme</th>
+                <td>{{ definitive.extreme }}</td>
+            </tr>
+            <tr>
+                <th>Vie</th>
+                <td>{{ definitive.vie }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if definitive.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ definitive.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ definitive.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ definitive.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ definitive.modifieLe }}</td>
+            </tr>
+            <tr>
+                <th>Tampon1</th>
+                <td>{{ definitive.tampon1 }}</td>
+            </tr>
+            <tr>
+                <th>Tampon2</th>
+                <td>{{ definitive.tampon2 }}</td>
+            </tr>
+            <tr>
+                <th>Tampon3</th>
+                <td>{{ definitive.tampon3 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('definitive_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('definitive_edit', { 'id': definitive.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
