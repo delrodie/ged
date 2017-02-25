@@ -18,10 +18,14 @@ class DefaultController extends Controller
         // Nombre de rayonnages
         $nbRayonnage = $em->getRepository('AppBundle:Rayonnage')->getNombreRayonnage();
         $nbEpi = $em->getRepository('AppBundle:Epi')->getNombreEpi();
+        $nbProvisoire = $em->getRepository('AppBundle:Provisoire')->getNombreProvisoire();
+        $nbDefinitive = $em->getRepository('AppBundle:Definitive')->getNombreDefinitive();
 
         return $this->render('default/index.html.twig', array(
           'nbRayonnage' => $nbRayonnage,
           'nbEpi' => $nbEpi,
+          'nbProvisoire' => $nbProvisoire,
+          'nbDefinitive' => $nbDefinitive,
         ));
 
         //return $this->redirect('fos_user_security_login');

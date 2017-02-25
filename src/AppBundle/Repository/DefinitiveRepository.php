@@ -10,4 +10,34 @@ namespace AppBundle\Repository;
  */
 class DefinitiveRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+   * Calcule du nombre de cotes définitives
+   *
+   * Author: Delrodie AMOIKON
+   * Date: 25/02/2017
+   */
+   public function getNombreDefinitive()
+   {
+       $qb = $this->createQueryBuilder('d')
+           ->select('count(d.id)')
+           //->where('r.statut', 1)
+       ;
+
+       $query = $qb->getQuery();
+
+       $recup =  $query->getSingleScalarResult();
+
+       // Si compteur est egal a 0 alors initialiser
+       if ($recup < 10){
+           $suffixe = $recup ;
+           return $code = '00'.$suffixe;
+       }
+       elseif ($recup < 100) {
+         $suffixe = $recup ;
+         return $code = '0'.$suffixe;
+       }
+       else{
+           return $code = $recup;
+       }
+   }
 }
