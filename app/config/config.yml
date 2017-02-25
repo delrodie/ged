@@ -98,11 +98,11 @@ fos_user:
       address: delrodieamoikon@gmail.com
       sender_name: AMOIKON DIEUDONNE
 
-bazinga_faker:
-    orm: doctrine
-    locale: fr_FR
-    entities:
-        AppBundle\Entity\Epi:
-            number: 6
+#bazinga_faker:
+#    orm: doctrine
+#    locale: fr_FR
+#    entities:
+#        AppBundle\Entity\Epi:
+#            number: 6
         #AppBundle\Entity\Serie:
         #    number: 15

@@ -115,7 +115,7 @@ class Sousserie
      */
     public function setLibelle($libelle)
     {
-        $this->libelle = strtoupper($libelle);
+        $this->libelle = $libelle;
 
         return $this;
     }
