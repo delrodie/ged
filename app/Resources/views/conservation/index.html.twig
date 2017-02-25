@@ -72,7 +72,7 @@
               <td class="text-right">{{ conservation.id }}</td>
               <td class="text-left"><a href="{{ path('conservation_edit', { 'slug': conservation.slug }) }}">{{ conservation.libelle }}</a></td>
               <td class="text-justify">{{ conservation.description }}</td>
-              <td>
+              <td class="text-center">
                 {% if conservation.statut %}
                     Active
                 {% else %}

@@ -62,12 +62,12 @@
         <tr>
         <th class="text-center"> ID </th>
         <th class="text-center"> EPI </th>
-        <th class="text-center"> COTE PROVISOIRE </th>
-        <th class="text-center"> COTE DEFINITIVE </th>
+        <th class="text-center"> PROVISOIRE </th>
+        <th class="text-center"> DEFINITIVE </th>
         <th class="text-center"> DESCRIPTION </th>
         <th class="text-center"> POSITION </th>
-        <th class="text-center"> DATE EXTREME </th>
-        <th class="text-center"> DUREE VIE </th>
+        <th class="text-center"> EXTREME </th>
+        <th class="text-center"> DUREE </th>
         <th class="text-center"> STATUT </th>
         </tr>
         </thead>
@@ -75,14 +75,14 @@
             {% for definitive in definitives %}
             <tr>
               <td class="text-right">{{ definitive.id }}</td>
-              <td class="text-justify">{{ definitive.epi }}</td>
+              <td class="text-center">{{ definitive.epi }}</td>
               <td class="text-left">{{ definitive.provisoire }}</td>
-              <td class="text-left"><a href="{{ path('definitive_edit', { 'id': definitive.id }) }}">{{ definitive.libelle }}</a></td>
-              <td class="text-justify">{{ definitive.description }}</td>
-              <td class="text-center">E:<span style="font-weight:bold">  {{ definitive.etagere }} </span> - Pos: <span style="font-weight:bold">{{ definitive.position }} </span></td>
+              <td class="text-center"><a href="{{ path('definitive_edit', { 'id': definitive.id }) }}">{{ definitive.libelle }}</a></td>
+              <td class="text-justify">{{ definitive.description|capitalize }}</td>
+              <td class="text-left">Etagère:<span style="font-weight:bold">  {{ definitive.etagere }} </span> <br> Position: <span style="font-weight:bold">{{ definitive.position }} </span></td>
               <td class="text-center">{{ definitive.extreme }}</td>
               <td class="text-center">{{ definitive.vie }}</td>
-              <td>
+              <td class="text-center">
                 {% if definitive.statut %}
                     Active
                 {% else %}

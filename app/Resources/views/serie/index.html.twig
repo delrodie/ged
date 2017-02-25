@@ -70,9 +70,9 @@
             {% for serie in series %}
             <tr>
               <td class="text-right">{{ serie.id }}</td>
-              <td class="text-left"><a href="{{ path('serie_edit', { 'slug': serie.slug }) }}">{{ serie.libelle }}</a></td>
+              <td class="text-center"><a href="{{ path('serie_edit', { 'slug': serie.slug }) }}">{{ serie.libelle }}</a></td>
               <td class="text-justify">{{ serie.description }}</td>
-              <td>
+              <td class="center">
                 {% if serie.statut %}
                     Actif
                 {% else %}

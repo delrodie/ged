@@ -189,7 +189,7 @@ class Serie
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = strtoupper($description);
 
         return $this;
     }

@@ -71,10 +71,10 @@
             {% for sousserie in sousseries %}
             <tr>
               <td class="text-right">{{ sousserie.id }}</td>
-              <td class="text-justify">{{ sousserie.serie }}</td>
-              <td class="text-left"><a href="{{ path('sousserie_edit', { 'id': sousserie.id }) }}">{{ sousserie.libelle }}</a></td>
-              <td class="text-center">{{ sousserie.designation }}</td>
-              <td>
+              <td class="text-center">{{ sousserie.serie }}</td>
+              <td class="text-center"><a href="{{ path('sousserie_edit', { 'id': sousserie.id }) }}">{{ sousserie.libelle }}</a></td>
+              <td class="text-justify">{{ sousserie.designation }}</td>
+              <td class="text-center">
                 {% if sousserie.statut %}
                     Actif
                 {% else %}

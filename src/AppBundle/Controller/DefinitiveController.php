@@ -49,7 +49,7 @@ class DefinitiveController extends Controller
             $em->persist($definitive);
             $em->flush($definitive);
 
-            return $this->redirectToRoute('definitive_show', array('id' => $definitive->getId()));
+            return $this->redirectToRoute('definitive_index');
         }
 
         $provisoires = $em->getRepository('AppBundle:Provisoire')->getProvisoire();

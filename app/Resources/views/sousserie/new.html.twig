@@ -24,7 +24,7 @@
       <a href="{{ path('homepage')}}">Accueil</a>
     </li>
     <li>
-      <a href="{{ path('conservation_index')}}">Sous serie</a>
+      <a href="{{ path('sousserie_index')}}">Sous serie</a>
     </li>
     <li class="active">Enregistrement</li>
   </ol>
@@ -139,7 +139,7 @@
 
   <script type="text/javascript">
 
-    var data = [{% for serie in series %} { id: {{ serie.id }}, text: '{{ serie.libelle }}' }, {% endfor %}];
+    var data = [{% for serie in series %} { id: {{ serie.id }}, text: '{{ serie.libelle }} - {{ serie.description }}' }, {% endfor %}];
 
     $(".select-serie").select2({
       data: data,
